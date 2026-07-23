@@ -1,0 +1,26 @@
+name: basic_cleaning
+conda_env: conda.yml
+
+entry_points:
+  main:
+    parameters:
+      input_artifact:
+        description: Fully-qualified input artifact name
+        type: string
+      output_artifact:
+        description: Name for the cleaned output artifact
+        type: string
+      output_type:
+        description: Artifact type for the cleaned dataset
+        type: string
+      output_description:
+        description: Description for the cleaned dataset artifact
+        type: string
+      min_price:
+        description: Minimum accepted nightly price
+        type: float
+      max_price:
+        description: Maximum accepted nightly price
+        type: float
+
+    command: "python run.py --input_artifact {input_artifact} --output_artifact {output_artifact} --output_type {output_type} --output_description {output_description} --min_price {min_price} --max_price {max_price}"
