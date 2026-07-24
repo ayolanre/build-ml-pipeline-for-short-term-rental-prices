@@ -1,10 +1,35 @@
 import json
-
-import mlflow
-import tempfile
 import os
-import hydra
-from omegaconf import DictConfig
+import tempfile
+from typing import Any, Optional
+
+try:
+    import mlflow  # type: ignore[import-not-found]
+except Exception:  # pragma: no cover - allow editor/linter to run when mlflow isn't installed
+    class _MissingMlflow:
+        def run(self, *args: Any, **kwargs: Any) -> Any:
+            raise RuntimeError("mlflow is not installed. Install mlflow to run pipeline steps.")
+
+    mlflow = _MissingMlflow()  # type: ignore[assignment]
+
+try:
+    import hydra  # type: ignore[import-not-found]
+except Exception:  # pragma: no cover - allow editor/linter to run when hydra isn't installed
+    class _HydraStub:
+        @staticmethod
+        def main(*args: Any, **kwargs: Any):
+            def decorator(func):
+                return func
+            return decorator
+
+        class utils:
+            @staticmethod
+            def get_original_cwd() -> str:
+                return os.getcwd()
+
+    hydra = _HydraStub()  # type: ignore[assignment]
+
+DictConfig = dict[str, Any]
 
 _steps = [
     "download",
@@ -22,7 +47,9 @@ _steps = [
 # This automatically reads in the configuration
 # Adding version_base for Python 3.13 compatibility
 @hydra.main(version_base=None, config_name='config', config_path='.')
-def go(config: DictConfig):
+def go(config: Optional[DictConfig] = None) -> None:
+    if config is None:
+        raise ValueError("Hydra config is missing. Run this module through Hydra or provide a config.")
 
     # Setup the wandb experiment. All runs will be grouped under this name
     os.environ["WANDB_PROJECT"] = config["main"]["project_name"]
@@ -38,6 +65,9 @@ def go(config: DictConfig):
 
         if "download" in active_steps:
             # Download file and load in W&B
+            if mlflow is None:
+                raise RuntimeError("mlflow is not installed. Install mlflow to run pipeline steps.")
+
             _ = mlflow.run(
                 f"{config['main']['components_repository']}/get_data",
                 "main",
