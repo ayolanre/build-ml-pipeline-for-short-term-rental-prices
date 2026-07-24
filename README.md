@@ -51,10 +51,10 @@ This project requires **Python 3.13**. Please ensure that you have Python 3.13 i
 ### Fork the Starter kit
 Go to [https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices.git](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices.git)
 and click on `Fork` in the upper right corner. This will create a fork in your Github account, i.e., a copy of the
-repository that is under your control. Now clone the repository locally so you can start working on it:
+repository that is under your control. Now clone your forked repository locally so you can start working on it:
 
 ```
-git clone https://github.com/[your github username]/build-ml-pipeline-for-short-term-rental-prices.git
+git clone https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices.git
 ```
 
 and go into the repository:
@@ -80,12 +80,12 @@ Let's make sure we are logged in to Weights & Biases. Get your API key from W&B 
 then paste your key into this command:
 
 ```bash
-> wandb login [your API key]
+> wandb login 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
 ```
 
 You should see a message similar to:
 ```
-wandb: Appending key for api.wandb.ai to your netrc file: /home/[your username]/.netrc
+wandb: Appending key for api.wandb.ai to your netrc file: /home/ayolanre/.netrc
 ```
 
 ### Cookie cutter
@@ -191,11 +191,11 @@ _ = mlflow.run(
             )
 ```
 where `config['main']['components_repository']` is set to 
-[https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices#components](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices/tree/main/components).
+[https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices#components](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices/tree/main/components).
 You can see the parameters that they require by looking into their `MLproject` file:
 
-- `get_data`: downloads the data. [MLproject](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/get_data/MLproject)
-- `train_val_test_split`: segrgate the data (splits the data) [MLproject](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/train_val_test_split/MLproject)
+- `get_data`: downloads the data. [MLproject](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/get_data/MLproject)
+- `train_val_test_split`: segrgate the data (splits the data) [MLproject](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/train_val_test_split/MLproject)
 
 
 ## Instructions
@@ -432,7 +432,7 @@ Add it to the pipeline then run the pipeline. As usual, use the configuration fo
 **_HINT_**: The path to the step can
 be expressed as ``mlflow.run(f"{config['main']['components_repository']}/train_val_test_split", ...)``.
 
-You can see the parameters accepted by this step [here](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/train_val_test_split/MLproject)
+You can see the parameters accepted by this step [here](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/train_val_test_split/MLproject)
 
 After you execute, you will see something like:
 
@@ -499,7 +499,7 @@ Go to the artifact section of the selected job, and select the
 ### Test
 Use the provided step ``test_regression_model`` to test your production model against the
 test set. Implement the call to this component in the `main.py` file. As usual you can see the parameters in the
-corresponding [MLproject](https://github.com/udacity/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/test_regression_model/MLproject) 
+corresponding [MLproject](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/test_regression_model/MLproject) 
 file. Use the artifact `random_forest_export:prod` for the parameter `mlflow_model` and the test artifact
 `test_data.csv:latest` as `test_artifact`.
 
