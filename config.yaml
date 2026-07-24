@@ -1,7 +1,7 @@
 main:
   components_repository: "components"
   # Set to 'conda' on machines with conda available, or 'local' for a pre-provisioned venv.
-  mlflow_env_manager: local
+  mlflow_env_manager: conda
   # All the intermediate files will be copied to this directory at the end of the run.
   # Set this to null if you are running in prod
   project_name: nyc_airbnb

@@ -2,7 +2,6 @@
 """
 This script splits the provided dataframe in test and remainder
 """
-from wandb_utils.log_artifact import log_artifact
 import argparse
 import logging
 import os
@@ -12,8 +11,8 @@ import wandb
 import tempfile
 from sklearn.model_selection import train_test_split
 
-sys.path.insert(0, os.path.dirname(os.path.dirname(__file__)))
-
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+from wandb_utils.log_artifact import log_artifact
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)-15s %(message)s")
 logger = logging.getLogger()

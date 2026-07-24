@@ -6,6 +6,7 @@ import argparse
 import logging
 import os
 import shutil
+import stat
 import matplotlib.pyplot as plt
 
 import mlflow
@@ -99,6 +100,13 @@ def go(args):
 
     # Save model package in the MLFlow sklearn format
     if os.path.exists("random_forest_dir"):
+        for root, dirs, files in os.walk("random_forest_dir", topdown=False):
+            for name in files:
+                path = os.path.join(root, name)
+                os.chmod(path, stat.S_IWRITE)
+            for name in dirs:
+                path = os.path.join(root, name)
+                os.chmod(path, stat.S_IWRITE)
         shutil.rmtree("random_forest_dir")
 
     ######################################

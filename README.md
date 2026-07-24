@@ -17,6 +17,7 @@ In this project you will build such a pipeline.
   * [The configuration](#the-configuration)
   * [Running the entire pipeline or just a selection of steps](#Running-the-entire-pipeline-or-just-a-selection-of-steps)
   * [Pre-existing components](#pre-existing-components)
+  * [Submission Details](#submission-details)
 - [Instructions](#instructions)
   * [Exploratory Data Analysis (EDA)](#exploratory-data-analysis-eda)
   * [Data cleaning](#data-cleaning)
@@ -122,6 +123,10 @@ The script ``run.py`` will receive the input parameters ``parameter1``, ``parame
 ```bash
 > mlflow run src/step_name -P parameter1=1 -P parameter2=2 -P parameter3="test"
 ```
+
+### Submission Details
+- W&B project: https://wandb.ai/ayolanre-chevron/nyc_airbnb
+- GitHub repository: https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices.git
 
 ### The configuration
 As usual, the parameters controlling the pipeline are defined in the ``config.yaml`` file defined in

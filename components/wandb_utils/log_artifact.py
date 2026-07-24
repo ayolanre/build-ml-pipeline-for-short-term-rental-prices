@@ -1,5 +1,5 @@
+import os
 import wandb
-import mlflow
 
 
 def log_artifact(artifact_name, artifact_type, artifact_description, filename, wandb_run):
@@ -22,6 +22,11 @@ def log_artifact(artifact_name, artifact_type, artifact_description, filename, w
     )
     artifact.add_file(filename)
     wandb_run.log_artifact(artifact)
+    # When running in offline mode we cannot wait for the artifact to be uploaded
+    # (there is no remote upload), so skip waiting in that case.
+    if os.environ.get("WANDB_MODE", "").lower() == "offline":
+        return
+
     # We need to call this .wait() method before we can use the
     # version below. This will wait until the artifact is loaded into W&B and a
     # version is assigned
