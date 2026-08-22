@@ -9,9 +9,9 @@ In this project you will build such a pipeline.
 ## Submission Links
 
 - **Public GitHub repository:** [ayolanre/build-ml-pipeline-for-short-term-rental-prices](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices)
-- **Public W&B project:** [https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning](https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning)
+- **W&B view-only report:** [https://wandb.ai/ayolanre-chevron/nyc_airbnb/reports/nyc_airbnb-Project-Reports--VmlldzoxNzc4NjgxOQ](https://wandb.ai/ayolanre-chevron/nyc_airbnb/reports/nyc_airbnb-Project-Reports--VmlldzoxNzc4NjgxOQ)
 
-### Grader Verification Guide
+### Verification Guide
 
 The pipeline is implemented in [main.py](main.py), with reusable MLflow steps under [src](src) and the provided components under [components](components). The public W&B project contains the run history, artifacts, metrics, and pipeline graph.
 
@@ -147,7 +147,7 @@ The script ``run.py`` will receive the input parameters ``parameter1``, ``parame
 
 ### Submission Details
 - GitHub repository: [https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices)
-- W&B project: [https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning](https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning)
+- W&B view-only report: [https://wandb.ai/ayolanre-chevron/nyc_airbnb/reports/nyc_airbnb-Project-Reports--VmlldzoxNzc4NjgxOQ](https://wandb.ai/ayolanre-chevron/nyc_airbnb/reports/nyc_airbnb-Project-Reports--VmlldzoxNzc4NjgxOQ)
 
 ### The configuration
 As usual, the parameters controlling the pipeline are defined in the ``config.yaml`` file defined in
