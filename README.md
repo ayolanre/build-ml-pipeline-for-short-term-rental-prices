@@ -11,6 +11,22 @@ In this project you will build such a pipeline.
 - **Public GitHub repository:** [ayolanre/build-ml-pipeline-for-short-term-rental-prices](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices)
 - **Public W&B project:** [https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning](https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning)
 
+### Grader Verification Guide
+
+The pipeline is implemented in [main.py](main.py), with reusable MLflow steps under [src](src) and the provided components under [components](components). The public W&B project contains the run history, artifacts, metrics, and pipeline graph.
+
+| Rubric evidence | Location or command |
+| --- | --- |
+| EDA notebook | [src/eda/EDA.ipynb](src/eda/EDA.ipynb) |
+| Cleaning step | [src/basic_cleaning](src/basic_cleaning) |
+| Data tests | [src/data_check/test_data.py](src/data_check/test_data.py) |
+| Random Forest training and export | [src/train_random_forest/run.py](src/train_random_forest/run.py) |
+| Full pipeline | `mlflow run .` |
+| Test-set verification | `mlflow run . -P steps=test_regression_model` after tagging `model_export` as `prod` in W&B |
+| Released pipeline | [v1.0.2](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices/releases/tag/v1.0.2) |
+
+Expected W&B artifact names are `sample.csv`, `clean_sample.csv`, `trainval_data.csv`, `test_data.csv`, and `model_export`. The `clean_sample.csv` artifact used for data testing must have the `reference` alias, and the selected `model_export` artifact must have the `prod` alias.
+
 ## Table of contents
 
 - [Introduction](#build-an-ML-Pipeline-for-Short-Term-Rental-Prices-in-NYC)
@@ -452,7 +468,7 @@ Complete the script ``src/train_random_forest/run.py``. All the places where you
 a `# YOUR CODE HERE` comment and are delimited by two signs like `######################################`. You can
 find further instructions in the file.
 
-Once you are done, add the step to ``main.py``. Use the name ``random_forest_export`` as ``output_artifact``.
+Once you are done, add the step to ``main.py``. Use the name ``model_export`` as ``output_artifact``.
 
 **_NOTE_**: the main.py file already provides a variable ``rf_config`` to be passed as the
             ``rf_config`` parameter.
@@ -505,8 +521,8 @@ Go to the artifact section of the selected job, and select the
 Use the provided step ``test_regression_model`` to test your production model against the
 test set. Implement the call to this component in the `main.py` file. As usual you can see the parameters in the
 corresponding [MLproject](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices/blob/main/components/test_regression_model/MLproject) 
-file. Use the artifact `random_forest_export:prod` for the parameter `mlflow_model` and the test artifact
-`test_data.csv:latest` as `test_artifact`.
+file. Use the artifact `model_export:prod` for the parameter `mlflow_model` and the test artifact
+`test_data.csv:latest` as `test_dataset`.
 
 **NOTE**: This step is NOT run by default when you run the pipeline. In fact, it needs the manual step
 of promoting a model to ``prod`` before it can complete successfully. Therefore, you have to

@@ -157,7 +157,7 @@ def go(config: Optional[DictConfig] = None) -> None:
                 "main",
                 env_manager=env_manager,
                 parameters={
-                    "mlflow_model": "random_forest_export:prod",
+                    "mlflow_model": "model_export:prod",
                     "test_dataset": "test_data.csv:latest",
                 },
             )
