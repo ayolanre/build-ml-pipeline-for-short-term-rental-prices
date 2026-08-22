@@ -6,6 +6,11 @@ to be retrained with the same cadence, necessitating an end-to-end pipeline that
 
 In this project you will build such a pipeline.
 
+## Submission Links
+
+- **Public GitHub repository:** [ayolanre/build-ml-pipeline-for-short-term-rental-prices](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices)
+- **Public W&B project:** [https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning](https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning)
+
 ## Table of contents
 
 - [Introduction](#build-an-ML-Pipeline-for-Short-Term-Rental-Prices-in-NYC)
@@ -77,10 +82,10 @@ file provided in the root of the repository and activate it:
 ### Get API key for Weights and Biases
 Let's make sure we are logged in to Weights & Biases. Get your API key from W&B by going to 
 [https://wandb.ai/authorize](https://wandb.ai/authorize) and click on the + icon (copy to clipboard), 
-then paste your key into this command:
+then paste your key into this command locally. Never commit an API key to the repository:
 
 ```bash
-> wandb login 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
+> wandb login
 ```
 
 You should see a message similar to:
@@ -125,8 +130,8 @@ The script ``run.py`` will receive the input parameters ``parameter1``, ``parame
 ```
 
 ### Submission Details
-- W&B project: https://wandb.ai/ayolanre-chevron/nyc_airbnb
-- GitHub repository: https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices.git
+- GitHub repository: [https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices](https://github.com/ayolanre/build-ml-pipeline-for-short-term-rental-prices)
+- W&B project: [https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning](https://wandb.ai/ayolanre-chevron/build-ml-pipeline-for-short-term-rental-prices-src_basic_cleaning)
 
 ### The configuration
 As usual, the parameters controlling the pipeline are defined in the ``config.yaml`` file defined in
